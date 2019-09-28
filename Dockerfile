@@ -4,5 +4,5 @@ RUN mkdir /calculate/
 WORKDIR /calculate/
 COPY . /calculate/
 RUN pip install -r requirements.txt
-EXPOSE 80
-CMD ["python", "/calculate/calculator.py", "-p 80"]
+EXPOSE 8080
+CMD ["python", "/calculate/calculator.py", "-p 8080"]
