@@ -39,7 +39,7 @@ def wrap_html(message):
 
 
 @app.route('/calculate')
-def hello_world():
+def calculator():
     message = 'Hello Novartis Calculator! 2+3 = '
     calcuate = str(add(2, 3))
     html = wrap_html(message+calcuate)
