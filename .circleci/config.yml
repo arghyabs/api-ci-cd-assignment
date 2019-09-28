@@ -70,16 +70,8 @@ jobs:
             docker build -t ${IMAGE} .
             docker tag ${IMAGE} gcr.io/${PROJECT_ID}/${IMAGE}:$CIRCLE_SHA1
             gcloud docker -- push gcr.io/${PROJECT_ID}/${IMAGE}:$CIRCLE_SHA1
-            EXISTING_SERVICE=$(kubectl get services --format="value(name)" --filter="name=$CONTAINER_NAME")
-            if [ "${EXISTING_SERVICE}" == $CONTAINER_NAME ]
-            then
-              kubectl delete service $CONTAINER_NAME
-            fi
-            # EXISTING_DEPLOYMENT=$(kubectl get deployment --format="value(name)" --filter="name=$DEPLOYMENT_NAME")
-            #if [ "${EXISTING_DEPLOYMENT}" == $DEPLOYMENT_NAME ]
-            #then
-            #  kubectl delete deployment $DEPLOYMENT_NAME
-            #fi
+            kubectl delete service $CONTAINER_NAME --ignore-not-found
+            kubectl delete deployment $DEPLOYMENT_NAME --ignore-not-found
             kubectl create deployment ${DEPLOYMENT_NAME} --image=gcr.io/${PROJECT_ID}/${IMAGE}:$CIRCLE_SHA1
             kubectl expose deployment ${DEPLOYMENT_NAME} --type=LoadBalancer --port 80 --target-port 8080
             kubectl get pods,po,svc,deployment,service
