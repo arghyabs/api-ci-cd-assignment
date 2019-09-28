@@ -3,7 +3,6 @@
 
 # In[1]:
 
-
 """
 Unit tests for the calculator library
 """
