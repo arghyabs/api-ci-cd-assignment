@@ -41,11 +41,10 @@ def wrap_html(message):
 @app.route('/calculate')
 def hello_world():
     message = 'Hello Novartis Calculator! 2+3 = '
-    calcuate = str(add(2,3))
+    calcuate = str(add(2, 3))
     html = wrap_html(message+calcuate)
     return html
 
 
 if __name__ == '__main__':
     app.run(host='35.188.94.16', port=5000)
-
