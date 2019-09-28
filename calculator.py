@@ -22,6 +22,7 @@ def subtract(first_term, second_term):
 def multiply(first_term, second_term):
     return first_term * second_term
 
+
 def wrap_html(message):
     html = """
         <html>
@@ -36,6 +37,7 @@ def wrap_html(message):
         </html>""".format(message)
     return html
 
+
 @app.route('/calculate')
 def hello_world():
     message = 'Hello Novartis Calculator! 2+3 = '
@@ -43,5 +45,7 @@ def hello_world():
     html = wrap_html(message+calcuate)
     return html
 
+
 if __name__ == '__main__':
     app.run(host='35.188.94.16', port=5000)
+
