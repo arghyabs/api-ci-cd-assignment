@@ -1,8 +1,8 @@
 FROM python:3.7
 
-RUN mkdir /opt/calculator/
-WORKDIR /opt/calculator/
-COPY requirements.txt .
-COPY dist/calculator /opt/calculator/
+RUN mkdir /calculate/
+WORKDIR /calculate/
+COPY . /calculate/
+RUN pip install -r requirements.txt
 EXPOSE 80
-CMD ["./calculator" ]
+CMD ["python", "calculator.py"]

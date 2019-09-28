@@ -63,10 +63,10 @@ jobs:
           command: |
             echo "${IMAGE}  ${CIRCLE_SHA1}"
             apt-get install -y python3-venv
-            pip install PyInstaller
+            #pip install PyInstaller
             python3 -m venv venv
             . venv/bin/activate
-            pyinstaller -F calculator.py
+            #pyinstaller -F calculator.py
             docker build -t ${IMAGE} .
             docker tag ${IMAGE} gcr.io/${PROJECT_ID}/${IMAGE}:$CIRCLE_SHA1
             gcloud docker -- push gcr.io/${PROJECT_ID}/${IMAGE}:$CIRCLE_SHA1
