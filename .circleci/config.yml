@@ -40,7 +40,7 @@ jobs:
     steps:
       - checkout
       - run: 
-          name: Setup Google Cloud SDK
+          name: Cloud authentication & Docker Image Pull
           command: |
             apt-get install -qq -y gettext
             echo $ACCOUNT_KEY_STAGING > service_key.txt
@@ -59,7 +59,7 @@ jobs:
             gcloud --quiet container clusters get-credentials $CLUSTER_NAME
       - setup_remote_docker
       - run: 
-          name: Docker build and push
+          name: Docker build, push and deploy
           command: |
             echo "${IMAGE}  ${CIRCLE_SHA1}"
             apt-get install -y python3-venv
